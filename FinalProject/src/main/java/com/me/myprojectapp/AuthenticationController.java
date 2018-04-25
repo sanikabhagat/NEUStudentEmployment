@@ -139,6 +139,7 @@ public ModelAndView handleAdminRegisterForm(HttpServletRequest request, AdminDAO
 		admin.setLastname(lastname);
 		admin.setEmployeeid(employeeid);
 		admin.setStatus(0);
+		admin.setRole("admin");
 
 		try {
 			Admin a = adminDao.register(admin);
@@ -390,6 +391,7 @@ public ModelAndView handleRegisterForm(HttpServletRequest request, StudentDAO st
 		student.setNuid(nuid);
 		student.setProgram(program); 
 		student.setStatus(0);
+		student.setRole("student");
 
 		try {
 			Student s = studentDao.register(student);

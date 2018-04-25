@@ -159,9 +159,14 @@ public ModelAndView showApplySuccessForm(HttpServletRequest request, UserDAO use
 			String grade=request.getParameter("grade");
 			
 			String loggeduser=request.getParameter("emailid");
+			String jobdetails=request.getParameter("jobid");
+			
+			System.out.println("QWERTY"+jobdetails);
 			
 			User loggeduserobject=handlerDao.getLoggedUser(loggeduser);
-			/*Job jobtobeapplied*/
+			Job jobdetailsobject=handlerDao.getLoggedJob(jobdetails);
+			
+			System.out.println("QWERTYQWERTY"+jobdetailsobject);
 			
 			System.out.println("ABAABCABC");
 			System.out.println("ABCABCABC"+loggeduser);
@@ -176,6 +181,8 @@ public ModelAndView showApplySuccessForm(HttpServletRequest request, UserDAO use
 			application.setGrade(grade);
 			
 			application.setUser(loggeduserobject);
+			
+			application.setJob(jobdetailsobject);
 			
 			
 			try {

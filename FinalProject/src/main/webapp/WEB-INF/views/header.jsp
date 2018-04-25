@@ -17,6 +17,8 @@
 
 
 
+
+
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -27,6 +29,12 @@
   <body>
   
   <c:set var="contextPath" value="${pageContext.request.contextPath}" />
+   
+   <c:set var="admin" value="admin" />
+   
+      <c:set var="student" value="student" />
+   
+   
    
    <div class="container">
     <div class="brand">
@@ -51,8 +59,31 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Student <span class="sr-only">(current)</span></a></li>
-        <li><a href="#">Admin</a></li>
+      
+      <c:choose>   
+<c:when test="${sessionScope.user.role eq student}">
+
+
+ <li class="active"><a href="${contextPath}/user/userdashboard.htm">Student</a></li>
+		
+        </c:when>
+        
+        
+        <c:when test="${sessionScope.user.role eq admin}">
+
+
+  <li><a href="${contextPath}/user/admindashboard.htm">Admin</a></li>
+		
+        </c:when>
+        
+        <c:otherwise>
+       
+        </c:otherwise>
+      </c:choose>  
+      
+      
+      <!--   <li class="active"><a href="#">Student <span class="sr-only">(current)</span></a></li>
+        <li><a href="#">Admin</a></li> -->
          <li><a href="#">Help</a></li>
          </ul>
       <ul class="nav navbar-nav navbar-right">

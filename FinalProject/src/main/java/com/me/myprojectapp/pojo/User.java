@@ -23,7 +23,7 @@ public class User {
 	private String emailid;
 	private String password;
 	private int status;
-	
+	private String role;
 	
 	private Collection<Application> application=new ArrayList<Application>();
 
@@ -91,6 +91,16 @@ public class User {
 	
 	public void setApplication(Collection<Application> application) {
 		this.application = application;
+	}
+
+	
+	@Column(name = "role")
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
 	}
 
 	

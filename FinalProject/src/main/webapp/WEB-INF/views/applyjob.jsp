@@ -11,11 +11,13 @@ Hi : ${map.jobDesc.jobid}
 ${sessionScope.user.emailid}
  <%-- <input type="hidden" value="${sessionScope.user.emailid}" name="loggedadmin"> 
   --%>
-
+ 
+  
 
 	<div class="applyjob">
 	<form class="form-inline" action="applyjob.htm" method="POST">
 	
+	 <input type="hidden" value="${map.jobDesc.jobid}" name="jobid"> 
 	
   <label class="sr-only" for="firstname">First Name</label>
   ${sessionScope.user.firstname}

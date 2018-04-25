@@ -7,8 +7,9 @@
 
 <ul>
 <li><a href="${contextPath}/user/createjob.htm">Create New Job</a></li>
-        <li><a href="${contextPath}/user/mydetails.htm">Update Job</a></li>
-            <li><a href="${contextPath}/user/findjob.htm">Delete Job</a></li>
+        <li><a href="${contextPath}/user/joblist.htm">Update Job</a></li>
+            <li><a href="${contextPath}/user/joblist.htm">Delete Job</a></li>
+              <li><a href="${contextPath}/user/joblist.htm">View All Applications</a></li>
 </ul>
 
 
