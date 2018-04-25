@@ -1,8 +1,12 @@
 package com.me.myprojectapp.dao;
 
+import java.util.ArrayList;
+
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 
 import com.me.myprojectapp.pojo.Application;
+import com.me.myprojectapp.pojo.Job;
 
 
 public class ApplicationsDAO extends DAO{
@@ -21,6 +25,23 @@ public class ApplicationsDAO extends DAO{
 		} catch (HibernateException e) {
 			rollback();
 			throw new Exception("Exception while creating applications: " + e.getMessage());
+		}
+	}
+	
+	
+	
+	public ArrayList<Application> getApplications(String studentid) throws Exception {
+		try {
+			
+			Query q = getSession().createQuery("from Application where studentid = :studentid");
+			q.setString("studentid", studentid);
+			ArrayList<Application> listOfApplications=(ArrayList<Application>) q.list();		
+			
+			return listOfApplications;
+
+		} catch (HibernateException e) {
+			rollback();
+			throw new Exception("Could not get user ");
 		}
 	}
 	

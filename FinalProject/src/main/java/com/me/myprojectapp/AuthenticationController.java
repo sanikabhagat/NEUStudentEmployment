@@ -332,12 +332,6 @@ public String showLogoutForm(HttpServletRequest request) {
 }
 
 
-@RequestMapping(value = "/user/myapplications.htm", method = RequestMethod.GET)
-public String showMyApplicationsForm() {
-		
-	return "myapplications";
-}
-
 
 @RequestMapping(value = "/user/mydetails.htm", method = RequestMethod.GET)
 public String showMyDetailsForm() {

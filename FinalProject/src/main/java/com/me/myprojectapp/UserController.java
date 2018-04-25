@@ -223,6 +223,60 @@ public ModelAndView showApplySuccessSucessForm(HttpServletRequest request, UserD
 		return new ModelAndView("applysuccess");
 	}
 
+
+@RequestMapping(value = "/user/myapplications.htm", method = RequestMethod.GET)
+public ModelAndView showMyApplicationsForm(HttpServletRequest request, UserDAO userDao, AdminDAO adminDao, ApplicationsDAO applicationDao, StudentDAO studentDao, Job job, JobDAO jobDao, ModelMap map) {
+	
+String studentid=request.getParameter("userid");
+
+System.out.println("SSSSSSSSSSSSS"+studentid);
+
+	try {
+		ArrayList<Application> listOfApplications=applicationDao.getApplications(studentid);
+		map.addAttribute("listOfApplications",listOfApplications);
+		for(Application eachApplication:listOfApplications) {
+			
+			System.out.println("Each Applicationnnnnnnnnnn"+eachApplication.getSkills());
+		}
+	}
+	catch(Exception e) {
+		System.out.println("Inside Job List Exception"+e);
+	}
+
+
+	return new ModelAndView("myapplications","map",map);
+}
+
+
+/*@RequestMapping(value = "/user/viewalljobs.htm", method = RequestMethod.POST)
+public ModelAndView showViewJobsForm(HttpServletRequest request, UserDAO userDao, AdminDAO adminDao, StudentDAO studentDao, Job job, JobDAO jobDao,ModelMap map) {
+	
+
+
+	//HttpSession session = request.getSession();
+	
+		String jobid = request.getParameter("job");
+		System.out.println(jobid);
+		
+
+		try {
+			Job jobDesc=jobDao.viewEachJob(jobid);
+			map.addAttribute("jobDesc",jobDesc);
+			
+				System.out.println("Each Job"+jobDesc);
+		
+		}
+		catch(Exception e) {
+			System.out.println("Inside Job List Exception"+e);
+		}
+		
+
+	return new ModelAndView("applyjob","map",map);
+	
+}*/
+
+
+
 }
 
 

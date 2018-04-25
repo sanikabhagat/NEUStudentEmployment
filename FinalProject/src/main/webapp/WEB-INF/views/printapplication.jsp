@@ -2,7 +2,7 @@
 
 
 
-<p>My Details</p>
+<p>Your application is Printed</p>
 
 
 
