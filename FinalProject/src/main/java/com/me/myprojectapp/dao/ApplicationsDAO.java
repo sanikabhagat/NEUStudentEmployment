@@ -41,7 +41,7 @@ public class ApplicationsDAO extends DAO{
 
 		} catch (HibernateException e) {
 			rollback();
-			throw new Exception("Could not get user ");
+			throw new Exception("Could not get the Application of a particular student");
 		}
 	}
 	
@@ -57,6 +57,22 @@ public class ApplicationsDAO extends DAO{
 		} catch (HibernateException e) {
 			rollback();
 			throw new Exception("Could not get the Application whose status is to be checked ");
+		}
+	}
+	
+	
+	public ArrayList<Application> getAllApplications() throws Exception {
+		try {
+			
+			Query q = getSession().createQuery("from Application");
+			
+			ArrayList<Application> allApplications=(ArrayList<Application>) q.list();		
+			
+			return allApplications;
+
+		} catch (HibernateException e) {
+			rollback();
+			throw new Exception("Could not get all Applications");
 		}
 	}
 	
