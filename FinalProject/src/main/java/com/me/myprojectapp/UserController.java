@@ -1,16 +1,24 @@
 package com.me.myprojectapp;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.springframework.http.MediaType;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.me.myprojectapp.dao.AdminDAO;
@@ -25,6 +33,8 @@ import com.me.myprojectapp.pojo.User;
 
 @Controller
 public class UserController {
+	
+	private static final String RESUME_DIR = "/Resume/";
 
 	@RequestMapping(value = "/user/viewalljobs.htm", method = RequestMethod.GET)
 	public ModelAndView showViewAllJobsForm(HttpServletRequest request, UserDAO userDao, AdminDAO adminDao, StudentDAO studentDao, Job job, JobDAO jobDao,ModelMap map) {
@@ -160,6 +170,8 @@ public ModelAndView showApplySuccessForm(HttpServletRequest request, UserDAO use
 			String experience=request.getParameter("experience");
 			String grade=request.getParameter("grade");
 			
+			
+			
 			String loggeduser=request.getParameter("emailid");
 			String jobdetails=request.getParameter("jobid");
 			
@@ -181,6 +193,7 @@ public ModelAndView showApplySuccessForm(HttpServletRequest request, UserDAO use
 			application.setSkills(skills);
 			application.setExperience(experience);
 			application.setGrade(grade);
+			application.setAppstatus("pending");
 			
 			application.setUser(loggeduserobject);
 			
@@ -350,6 +363,61 @@ public @ResponseBody ArrayList<Job> printSearchJobForm(HttpServletRequest reques
 
 
 /* ------------------------------------------------------------------------------------------------------------------ */
+
+
+/* ------------------------------------------------------------------------------------------------------------------ */
+
+
+@RequestMapping(value="/user/upload.htm",  method = RequestMethod.POST)
+
+
+
+// If not @RestController, uncomment this
+@ResponseBody
+public ResponseEntity<?> uploadFile(
+        @RequestParam("file") MultipartFile file) {
+
+	
+	
+    if (file.isEmpty()) {
+        return new ResponseEntity("please select a file!", HttpStatus.OK);
+    }
+
+        // Get the file and save it somewhere
+
+        String resumeDir = System.getProperty("user.dir") + RESUME_DIR;
+        System.out.println(resumeDir);
+
+        if (!Files.exists(Paths.get(resumeDir))) {
+
+            new File(resumeDir).mkdir();
+
+        }
+
+        File tempFile = new File(resumeDir + file.getOriginalFilename());
+
+        try {
+            file.transferTo(tempFile);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+       /* Path path = Paths.get(resumeDir + file.getOriginalFilename());
+        Files.write(path, bytes);
+
+        redirectAttributes.addFlashAttribute(“message”,
+                “You successfully uploaded ‘” + file.getOriginalFilename() + “’”);*/
+
+
+
+    return new ResponseEntity("Successfully uploaded - " +
+            file.getOriginalFilename(), new HttpHeaders(), HttpStatus.OK);
+
+}
+
+
+/* ------------------------------------------------------------------------------------------------------------------ */
+
+
 
 }
 

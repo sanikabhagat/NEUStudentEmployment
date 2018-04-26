@@ -22,7 +22,8 @@ public class Application {
 	private String grade;
 	private String experience;
 	private String skills;
-	
+	private String resume;
+	private String appstatus;
 	
 	private Job job;
 	private User user;
@@ -131,6 +132,28 @@ public class Application {
 	public void setNuid(String nuid) {
 		this.nuid = nuid;
 	}
+
+	@Column(name = "resume", nullable = true)
+	public String getResume() {
+		return resume;
+	}
+
+
+	public void setResume(String resume) {
+		this.resume = resume;
+	}
+
+	@Column(name = "appstatus")
+	public String getAppstatus() {
+		return appstatus;
+	}
+
+
+	public void setAppstatus(String appstatus) {
+		this.appstatus = appstatus;
+	}
+	
+	
 	
 	
 	

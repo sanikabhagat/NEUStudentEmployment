@@ -11,7 +11,7 @@
 
 <div class="container">
 <form action="viewjobinformation.htm" method="POST">
-<p>Job ID<input type="hidden" id="jobid" name="jobid" value="${map.jobDesc.jobid}"></p>
+<input type="hidden" id="jobid" name="jobid" value="${map.jobDesc.jobid}">
 <p>Job ID<c:out value = "${map.jobDesc.jobid}"/></p>
 <p>Job Title<c:out value = "${map.jobDesc.jobtitle}"/></p>
 <p>Employer<c:out value = "${map.jobDesc.employer}"/></p>

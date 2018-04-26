@@ -55,7 +55,8 @@ $( "#searchjob" ).keyup(function() {
 					var a = document.createElement("a");
 							a.href = contextPath
 									+ "/user/viewjobinformation.htm?jobid="
-									+ job.jobid, a.innerHTML = "Job ID";
+									+ data[job].jobid;
+									a.innerHTML = "Job ID";
 					a.value = data[job].jobid;
 
 					var p_jobtitle = document.createElement("p");
