@@ -1,7 +1,7 @@
 <jsp:include page="header.jsp" />
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
  <c:set var="contextPath" value="${pageContext.request.contextPath}" />
-
+<%@page import="com.captcha.botdetect.web.servlet.Captcha"%>
     <div class="mainbody" style="height:200px">
     
     </div>
@@ -36,16 +36,16 @@
 
 
   
- <%--  <label for="captchaCode" class="prompt">Retype the characters from the picture:</label> 
+   <label for="captchaCode" class="prompt">Retype the characters from the picture:</label> 
 				<%
-					// Adding BotDetect Captcha to the page
+				// Adding BotDetect Captcha to the page
 					Captcha captcha = Captcha.load(request, "CaptchaObject");
 					captcha.setUserInputID("captchaCode");
 
 					String captchaHtml = captcha.getHtml();
 					out.write(captchaHtml);
 				%> 
-				<input id="captchaCode" type="text" name="captchaCode" required="required"/> --%>
+				<input id="captchaCode" type="text" name="captchaCode" required="required"/> 
 
   <button type="submit" class="btn btn-primary">Sign Up</button>
 </form>

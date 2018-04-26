@@ -45,4 +45,20 @@ public class ApplicationsDAO extends DAO{
 		}
 	}
 	
+	
+	public Application viewEachApplication(String applicationid) throws Exception {
+		try {
+			Query q = getSession().createQuery("from Application where applicationid = :applicationid");
+			q.setString("applicationid", applicationid);
+			Application applicationDesc=(Application) q.uniqueResult();		
+			System.out.println("Application Found is"+applicationDesc.getApplicationid());
+			return applicationDesc;
+
+		} catch (HibernateException e) {
+			rollback();
+			throw new Exception("Could not get the Application whose status is to be checked ");
+		}
+	}
+	
+	
 }

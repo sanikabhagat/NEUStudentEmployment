@@ -248,32 +248,57 @@ System.out.println("SSSSSSSSSSSSS"+studentid);
 }
 
 
-/*@RequestMapping(value = "/user/viewalljobs.htm", method = RequestMethod.POST)
-public ModelAndView showViewJobsForm(HttpServletRequest request, UserDAO userDao, AdminDAO adminDao, StudentDAO studentDao, Job job, JobDAO jobDao,ModelMap map) {
+@RequestMapping(value = "/user/myapplications.htm", method = RequestMethod.POST)
+public ModelAndView myApplicationStatusForm(HttpServletRequest request, UserDAO userDao, AdminDAO adminDao, StudentDAO studentDao, ApplicationsDAO applicationDao, Job job, JobDAO jobDao,ModelMap map) {
 	
 
 
 	//HttpSession session = request.getSession();
 	
-		String jobid = request.getParameter("job");
-		System.out.println(jobid);
+		String applicationid = request.getParameter("applicationid");
+		System.out.println(applicationid);
 		
 
 		try {
-			Job jobDesc=jobDao.viewEachJob(jobid);
-			map.addAttribute("jobDesc",jobDesc);
+			Application applicationDesc=applicationDao.viewEachApplication(applicationid);
+			map.addAttribute("applicationDesc",applicationDesc);
 			
-				System.out.println("Each Job"+jobDesc);
+				System.out.println("Each Application"+applicationDesc);
 		
 		}
 		catch(Exception e) {
-			System.out.println("Inside Job List Exception"+e);
+			System.out.println("Inside Application List Exception"+e);
 		}
 		
 
-	return new ModelAndView("applyjob","map",map);
+	return new ModelAndView("viewapplicationstatus","map",map);
 	
-}*/
+}
+
+
+@RequestMapping(value = "/user/printapplication.htm", method = RequestMethod.GET)	
+public ModelAndView printApplicationForm(HttpServletRequest request, UserDAO userDao, ApplicationsDAO applicationDao, AdminDAO adminDao, JobDAO jobDao,ModelMap map) {
+		
+	//HttpSession session = request.getSession();
+	
+			String applicationid = request.getParameter("applicationid");
+			System.out.println(applicationid);
+			
+
+			try {
+				Application applicationDesc=applicationDao.viewEachApplication(applicationid);
+				map.addAttribute("applicationDesc",applicationDesc);
+				
+					System.out.println("Each Application"+applicationDesc);
+			
+			}
+			catch(Exception e) {
+				System.out.println("Inside Application List Exception"+e);
+			}
+			
+
+		return new ModelAndView("printapplication","map",map);
+	}
 
 
 

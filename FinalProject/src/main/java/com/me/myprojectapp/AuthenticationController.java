@@ -24,8 +24,8 @@ import com.me.myprojectapp.dao.AdminDAO;
 import com.me.myprojectapp.dao.HandlerDAO;
 import com.me.myprojectapp.dao.JobDAO;
 import com.me.myprojectapp.dao.StudentDAO;
-/*
-import com.captcha.botdetect.web.servlet.Captcha;*/
+
+import com.captcha.botdetect.web.servlet.Captcha;
 import com.me.myprojectapp.dao.UserDAO;
 import com.me.myprojectapp.pojo.Admin;
 import com.me.myprojectapp.pojo.Job;
@@ -122,11 +122,11 @@ public String adminRegisterForm() {
 @RequestMapping(value = "/user/adminregister.htm", method = RequestMethod.POST)
 public ModelAndView handleAdminRegisterForm(HttpServletRequest request, AdminDAO adminDao, UserDAO userDao, ModelMap map) {
 
-	/*Captcha captcha = Captcha.load(request, "CaptchaObject");*/
-	//String captchaCode = request.getParameter("captchaCode");
+	Captcha captcha = Captcha.load(request, "CaptchaObject");
+	String captchaCode = request.getParameter("captchaCode");
 	HttpSession session = request.getSession();
-	if(true) {
-/*	if (captcha.validate(captchaCode)) {*/
+	/*if(true) {*/
+	if (captcha.validate(captchaCode)) {
 		String useremail = request.getParameter("emailid");
 		String password = request.getParameter("password");
 		String firstname=request.getParameter("firstname");
@@ -366,11 +366,11 @@ public String showStudentRegisterForm() {
 @RequestMapping(value = "/user/studentregister.htm", method = RequestMethod.POST)
 public ModelAndView handleRegisterForm(HttpServletRequest request, StudentDAO studentDao, ModelMap map) {
 
-	/*Captcha captcha = Captcha.load(request, "CaptchaObject");*/
-	//String captchaCode = request.getParameter("captchaCode");
+	Captcha captcha = Captcha.load(request, "CaptchaObject");
+	String captchaCode = request.getParameter("captchaCode");
 	HttpSession session = request.getSession();
-	if(true) {
-/*	if (captcha.validate(captchaCode)) {*/
+	/*if(true) {*/
+	if (captcha.validate(captchaCode)) {
 		String useremail = request.getParameter("emailid");
 		String password = request.getParameter("password");
 		String firstname=request.getParameter("firstname");
