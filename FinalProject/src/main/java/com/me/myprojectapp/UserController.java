@@ -316,14 +316,28 @@ public @ResponseBody ArrayList<Job> printSearchJobForm(HttpServletRequest reques
 
 			
 			try {
-				ArrayList<Job> searchJobByName=jobDao.searchJob(searchjob);
+				ArrayList<Job> getAllJobs=jobDao.getJobs();
+				//ArrayList<Job> searchJobByName=jobDao.searchJob(searchjob);
 				//return map.addAttribute("searchJobByName",searchJobByName);
-				if(searchJobByName==null) {
-					return new ArrayList<Job>();
+				
+				if(searchjob==null || searchjob.isEmpty()) {
+					return getAllJobs;
 				}
-				else {
-					return searchJobByName;
-				}		
+				
+				
+				ArrayList<Job> searchJobByName=new ArrayList<Job>();
+				
+				for(Job job:getAllJobs) {
+					
+					if(job.getJobtitle().matches(searchjob)) {
+						searchJobByName.add(job);
+					}
+				}
+				
+				return searchJobByName;
+				
+				
+					
 			
 			}
 			catch(Exception e) {

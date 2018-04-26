@@ -8,48 +8,27 @@
 <input type="hidden" id="contextPath"
 	value="${pageContext.request.contextPath}" name="contextPath">
 <input type="text" name="searchjob" id="searchjob" />
-<button onclick="searchjob()">Search</button>
+<!-- <button onclick="searchjob()">Search</button> -->
 
 <div class="main_container" name="main_container" id="main_container"></div>
 
-
-<%-- <c:forEach items="${map.listOfJobs}" var="job">
-
-	<form action="viewjobinformation.htm" method="POST">
-		<!-- <form action="viewalljobs.htm" method="POST"> - -->
-
-		<div class="container">
-
-
-			<input type="hidden" id="jobid" name="jobid" value="${job.jobid}" />
-			<a
-				href="${contextPath}/user/viewjobinformation.htm?jobid=${job.jobid}">Job
-				ID :<c:out value="${job.jobid}" />
-			</a>
-			<p>
-				Job Title :
-				<c:out value="${job.jobtitle}" />
-			</p>
-			<p>
-				Employer :
-				<c:out value="${job.employer}" />
-			</p>
-			<p>
-				Openings :
-				<c:out value="${job.openings}" />
-			</p>
-			<button type="submit">Apply</button>
-
-		</div>
-	</form>
-</c:forEach>
- --%>
-
-
 <script>
+	
+$( document ).ready(function() {
+	searchjob();
+});
+
+
+$( "#searchjob" ).keyup(function() {
+	  searchjob();
+	});
+
+
 	function searchjob() {
 
+			
 		var main_container = document.getElementById("main_container");
+		main_container.innerHTML="";
 		var contextPath = document.getElementById("contextPath").value;
 		$.ajax({
 			type : "POST",
