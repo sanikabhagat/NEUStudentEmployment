@@ -8,7 +8,7 @@
 <c:forEach items="${map.allApplications}" var="application">
 
 <!-- <form action="viewjobinformation.htm" method="POST"> --> 
-< <form action="changeapplicationstatus.htm" method="POST"> 
+ <form action="changeapplicationstatus.htm" method="POST"> 
 <div class="container" style="border:1px solid black">
 <input type="hidden" id="jobid" name="jobid" value="${applicat.jobid}"/> 
 <input type="hidden" id="applicationid" name="applicationid" value="${application.applicationid}"/> 

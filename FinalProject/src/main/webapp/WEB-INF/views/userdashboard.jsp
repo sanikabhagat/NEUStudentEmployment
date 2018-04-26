@@ -14,7 +14,7 @@ ${sessionScope.user.userid}
     <li><a href="${contextPath}/user/viewalljobs.htm">View All Jobs</a></li>
         <li><a href="${contextPath}/user/viewalljobs.htm">Apply to Jobs</a></li>
 <li><a href="${contextPath}/user/myapplications.htm?userid=${sessionScope.user.userid}">My Applications</a></li>
-        <li><a href="${contextPath}/user/mydetails.htm">View Application Status</a></li>
+   
         
 </ul>
 

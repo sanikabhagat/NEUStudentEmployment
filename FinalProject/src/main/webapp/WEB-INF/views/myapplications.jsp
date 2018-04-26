@@ -14,11 +14,12 @@
 
 
 
- <form action="myapplications.htm?applicationid=${application.applicationid}" method="POST"> 
+ <form action="checkapplicationstatus.htm" method="POST"> 
 <!-- <form> -->
 <div class="container" style="border:1px solid black">
  <a href="${contextPath}/user/printapplication.htm?applicationid=${application.applicationid}">Application ID :<c:out value = "${application.applicationid}"/></a> 
  
+ <input type="hidden" name="applicationid" id="applicationid" value="${application.applicationid}">
  
   <p>Job ID :<c:out value = "${application.job.jobid}"/></p> 
    <p>Job Title :<c:out value = "${application.job.jobtitle}"/></p>

@@ -417,6 +417,31 @@ public ResponseEntity<?> uploadFile(
 
 /* ------------------------------------------------------------------------------------------------------------------ */
 
+@RequestMapping(value = "/user/checkapplicationstatus.htm", method = RequestMethod.POST)
+public ModelAndView showChangeApplicationStatusForm(HttpServletRequest request, UserDAO userDao, AdminDAO adminDao, ApplicationsDAO applicationDao, StudentDAO studentDao, Job job, JobDAO jobDao,ModelMap map) {
+	
+	System.out.println("Inside Change Appication Status POST Controller");
+	
+	String applicationid = request.getParameter("applicationid");
+	System.out.println("Change App Status POST Application id:"+applicationid);
+	System.out.println(applicationid);
+	
+	/*String appstatus=request.getParameter("appstatus");
+	*/
+		
+	try {
+		Application viewApplicationStatus=applicationDao.viewEachApplication(applicationid);
+		map.addAttribute("viewApplicationStatus",viewApplicationStatus);
+		
+	}
+	catch(Exception e) {
+		System.out.println("Inside All Applications List Exception"+e);
+	}
+	
+	
+	
+		return new ModelAndView("checkapplicationstatus","map",map);
+}
 
 
 }
