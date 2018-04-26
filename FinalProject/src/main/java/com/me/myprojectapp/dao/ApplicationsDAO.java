@@ -75,6 +75,57 @@ public class ApplicationsDAO extends DAO{
 			throw new Exception("Could not get all Applications");
 		}
 	}
+/*	
+	
+	public Application applicationStatusChange(String applicationid) throws Exception {
+		try {
+			Query q = getSession().createQuery("from Application where applicationid = :applicationid");
+			q.setString("applicationid", applicationid);
+			Application applicationStatus=(Application) q.uniqueResult();		
+			System.out.println("Application Found is"+applicationStatus.getApplicationid());
+			return applicationStatus;
+
+		} catch (HibernateException e) {
+			rollback();
+			throw new Exception("Could not get the Application whose status is to be checked ");
+		}
+	}*/
+	
+/*	public Application editAndSaveApplication(Application eachApplicationStatusChange) throws Exception {
+		try {
+			begin();
+			System.out.println("Inside Application DAO");
+			getSession().save(status);
+			commit();
+			System.out.println("Inside DAO"+j);
+			return j;
+
+		} catch (HibernateException e) {
+			rollback();
+			throw new Exception("Exception while creating job: " + e.getMessage());
+		}
+	}
+*/
+
+
+	public Application editAndSaveApplication(Application eachApplicationStatusChange) throws Exception  {
+		try {
+			begin();
+			System.out.println("Inside Application DAO");
+			getSession().save(eachApplicationStatusChange);
+			commit();
+			System.out.println("Inside DAO"+eachApplicationStatusChange);
+			return eachApplicationStatusChange;
+
+		} catch (HibernateException e) {
+			rollback();
+			throw new Exception("Exception while creating job: " + e.getMessage());
+		}
+	}
+
+
+
+
 	
 	
 }

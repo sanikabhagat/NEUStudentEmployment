@@ -77,4 +77,125 @@ public class AdminController {
 	
 	/* ---------------------------------------------------------------------------------------------------------- */
 	
+	
+	
+	
+	
+	@RequestMapping(value = "/user/changeapplicationstatus.htm", method = RequestMethod.POST)
+	public ModelAndView showChangeApplicationStatusForm(HttpServletRequest request, UserDAO userDao, AdminDAO adminDao, ApplicationsDAO applicationDao, StudentDAO studentDao, Job job, JobDAO jobDao,ModelMap map) {
+		
+		System.out.println("Inside Change Appication Status POST Controller");
+		
+		String applicationid = request.getParameter("applicationid");
+		System.out.println("Change App Status POST Application id:"+applicationid);
+		System.out.println(applicationid);
+		
+		/*String appstatus=request.getParameter("appstatus");
+		*/
+		
+			
+			/*try {
+				
+				if(appstatus.equals("accept")) {
+				
+			
+				Application eachApplicationStatusChange=applicationDao.viewEachApplication(applicationid);
+				eachApplicationStatusChange.setAppstatus("accept");
+		
+				}
+				
+				else if(appstatus.equals("reject")){
+					Application eachApplicationStatusChange=applicationDao.viewEachApplication(applicationid);
+					eachApplicationStatusChange.setAppstatus("accept");
+				}
+				
+				else{
+					Application eachApplicationStatusChange=applicationDao.viewEachApplication(applicationid);
+					eachApplicationStatusChange.setAppstatus("pending");
+				}
+		}
+		*/
+		
+		try {
+			Application eachApplicationStatusChange=applicationDao.viewEachApplication(applicationid);
+			map.addAttribute("eachApplicationStatusChange",eachApplicationStatusChange);
+			
+		}
+		catch(Exception e) {
+			System.out.println("Inside All Applications List Exception"+e);
+		}
+		
+		
+		
+			return new ModelAndView("changeapplicationstatus","map",map);
+	}
+	
+	
+	
+	@RequestMapping(value = "/user/editstatus.htm", method = RequestMethod.POST)
+	public ModelAndView showViewJobsForm(HttpServletRequest request, UserDAO userDao, ApplicationsDAO applicationDao, AdminDAO adminDao, StudentDAO studentDao, Job job, JobDAO jobDao,ModelMap map) {
+		
+
+
+System.out.println("Inside Change Appication Status POSTtttttttttttttttttttt Controller");
+		
+		String applicationid = request.getParameter("applicationid");
+		System.out.println("Change App Status POSTttttttttttttttttttttt Application id:"+applicationid);
+		System.out.println(applicationid);
+		
+		String appstatus=request.getParameter("appstatus");
+		
+		
+			
+			try {
+				Application eachApplicationStatusChange=applicationDao.viewEachApplication(applicationid);
+				
+				
+				if(appstatus.equals("accept")) {
+			
+				eachApplicationStatusChange.setAppstatus("accept");
+		
+				}
+				
+				else if(appstatus.equals("reject")){
+					
+					eachApplicationStatusChange.setAppstatus("reject");
+				}
+				
+				else{
+					
+					eachApplicationStatusChange.setAppstatus("pending");
+				}
+				
+				System.out.println("STATUS STUA"+eachApplicationStatusChange.getAppstatus());
+				
+				
+				try {
+					Application applicationEdited=applicationDao.editAndSaveApplication(eachApplicationStatusChange);
+					System.out.println(applicationEdited);
+					System.out.println("Inside nested edit and save appplication");
+					
+		}		catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+			}
+		/*try {
+			Application eachApplicationStatusChange=applicationDao.viewEachApplication(applicationid);
+			map.addAttribute("eachApplicationStatusChange",eachApplicationStatusChange);
+			
+		}*/
+		catch(Exception e) {
+			System.out.println("Inside All Applications List Exception"+e);
+		}
+		
+		
+		
+			/*return new ModelAndView("changeapplicationstatus","map",map);*/
+			
+			return new ModelAndView ("redirect:/user/viewallapplications.htm");
+	}
+	
+	
 }

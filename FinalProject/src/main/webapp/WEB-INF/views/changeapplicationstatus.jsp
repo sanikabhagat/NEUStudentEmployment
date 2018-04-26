@@ -1,12 +1,42 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
-</head>
-<body>
+<jsp:include page="header.jsp" />
 
-</body>
-</html>
+
+
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
+
+<c:set var="contextPath" value="${pageContext.request.contextPath}" />
+
+<p>Change Application status</p>
+
+
+Chhhhhhhhhhhhhhhhhhhhhhhhhhhangeeeeeeeeeeeeeeeeeeeeeee
+
+<c:set value="${map.eachApplicationStatusChange}" var="application"/> 
+
+
+<div class="container">
+ <form action="editstatus.htm" method="POST"> 
+<!--  <form>  -->
+
+<input type="hidden" name="applicationid" id="applicationid" value="${application.applicationid}">
+<p>Application ID : <c:out value = "${application.applicationid}"/></p>
+ <p>Job Title :<c:out value = "${application.job.jobid}"/></p>
+   <p>Job Title :<c:out value = "${application.job.jobtitle}"/></p>
+   <p>Employer :<c:out value = "${application.job.employer}"/></p>
+   <p>Wage :<c:out value = "${application.job.wage}"/></p> 
+ <p>Grade Level :<c:out value = "${application.skills}"/></p>
+  <p>Skills :<c:out value = "${application.grade}"/></p>
+   <p>Experience :<c:out value = "${application.experience}"/></p>
+<p>Change Application status :
+<select name="appstatus">
+  <option value="accept">Accept</option>
+  <option value="reject">Reject</option>
+</select></p>
+
+  <button type="submit" class="btn btn-primary">Change and Save Status</button>
+</form> 
+</div>
+
+
+
+<jsp:include page="footer.jsp" />
