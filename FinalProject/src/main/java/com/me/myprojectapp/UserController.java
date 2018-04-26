@@ -5,10 +5,12 @@ import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.me.myprojectapp.dao.AdminDAO;
@@ -301,6 +303,39 @@ public ModelAndView printApplicationForm(HttpServletRequest request, UserDAO use
 	}
 
 
+/* -------------------------------------------- Search Job Using AJAX -------------------------------------------------------- */
+
+@RequestMapping(value = "/user/searchjob.htm", method = RequestMethod.POST)	
+public @ResponseBody ArrayList<Job> printSearchJobForm(HttpServletRequest request, UserDAO userDao, ApplicationsDAO applicationDao, AdminDAO adminDao, JobDAO jobDao,ModelMap map) {
+		
+	//HttpSession session = request.getSession();
+	
+			String searchjob = request.getParameter("searchjob");
+			System.out.println(searchjob);
+			
+
+			
+			try {
+				ArrayList<Job> searchJobByName=jobDao.searchJob(searchjob);
+				//return map.addAttribute("searchJobByName",searchJobByName);
+				if(searchJobByName==null) {
+					return new ArrayList<Job>();
+				}
+				else {
+					return searchJobByName;
+				}		
+			
+			}
+			catch(Exception e) {
+				System.out.println("Inside Search Job Exception"+e);
+			}
+			
+			return null;
+		
+	}
+
+
+/* ------------------------------------------------------------------------------------------------------------------ */
 
 }
 

@@ -14,6 +14,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+
 @Entity
 @Table(name = "job_table")
 public class Job {
@@ -31,6 +33,7 @@ public class Job {
 	
 	private Collection<Application> application=new ArrayList<Application>();
 	
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="adminid")
 	public User getUser() {
@@ -109,6 +112,7 @@ public class Job {
 		this.openings = openings;
 	}
 
+	@JsonIgnore
 	@OneToMany(mappedBy="job",cascade=CascadeType.PERSIST)
 	public Collection<Application> getApplication() {
 		return application;

@@ -112,6 +112,23 @@ Session session = (Session)DAO.getSession();
 		}
 	}
 	
+	
+	public ArrayList<Job> searchJob(String searchjob) throws Exception {
+		try {
+			Query q = getSession().createQuery("from Job where jobtitle = :jobtitle");
+			q.setString("jobtitle", searchjob);
+			
+ArrayList<Job> searchjobslist=(ArrayList<Job>) q.list();		
+			
+			return searchjobslist;
+			
+
+
+		} catch (HibernateException e) {
+			rollback();
+			throw new Exception("Could not get job to be edited ");
+		}
+	}
 
 
 }
