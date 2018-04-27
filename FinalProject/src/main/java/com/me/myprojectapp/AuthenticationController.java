@@ -114,15 +114,26 @@ userValidator.validate(user, bindingResult);
 /* --------------- Admin Registration ------------------*/
 
 @RequestMapping(value = "/user/adminregister.htm", method = RequestMethod.GET)
-public String adminRegisterForm() {
+public String adminRegisterForm(Map<String, Object> model) {
 		
+	 User user = new Admin();
+     model.put("loginAdminForm", user);
+	
 	return "adminregister";
 }
 
 
 
 @RequestMapping(value = "/user/adminregister.htm", method = RequestMethod.POST)
-public ModelAndView handleAdminRegisterForm(HttpServletRequest request, AdminDAO adminDao, UserDAO userDao, ModelMap map) {
+public ModelAndView handleAdminRegisterForm(HttpServletRequest request, AdminDAO adminDao, UserDAO userDao, ModelMap map,
+		
+		@Valid @ModelAttribute("loginAdminForm")Admin admin, BindingResult result, Map<String, Object> model) {
+	
+	
+	if (result.hasErrors()) {
+		System.out.println("Inside Admin Register Validator");
+        return new ModelAndView ("adminregister");
+    }
 
 	Captcha captcha = Captcha.load(request, "CaptchaObject");
 	String captchaCode = request.getParameter("captchaCode");
@@ -134,7 +145,7 @@ public ModelAndView handleAdminRegisterForm(HttpServletRequest request, AdminDAO
 		String firstname=request.getParameter("firstname");
 		String lastname=request.getParameter("lastname");
 		Long employeeid=Long.parseLong(request.getParameter("employeeid"));
-		Admin admin = new Admin();
+		admin = new Admin();
 		admin.setEmailid(useremail);
 		admin.setPassword(password);
 		admin.setFirstname(firstname);

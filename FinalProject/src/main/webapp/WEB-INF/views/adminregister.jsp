@@ -7,31 +7,31 @@
     </div>
 
 	<div class="register">
-	<form method="POST" action="adminregister.htm">
+	<form:form method="POST" action="adminregister.htm" commandName="loginAdminForm">
 	
-  <label class="sr-only" for="firstname">First Name</label>
-  <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="firstname" placeholder="Enter First Name" name="firstname"/>
-	
+  <form:label class="sr-only" for="firstname" path="firstname"/>First Name
+  <form:input class="form-control mb-2 mr-sm-2 mb-sm-0" id="firstname" placeholder="Enter First Name" name="firstname" path="firstname"/>
+	<form:errors path="firstname" cssClass="error"/>
 	<br/><br/>
 	
-<label class="sr-only" for="lastname">Last Name</label>
-  <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="lastname" placeholder="Enter Last Name" name="lastname"/>
-
+<form:label class="sr-only" for="lastname" path="lastname"/>Last Name
+  <form:input class="form-control mb-2 mr-sm-2 mb-sm-0" id="lastname" placeholder="Enter Last Name" name="lastname" path="lastname"/>
+<form:errors path="lastname" cssClass="error"/>
 <br/><br/>
 
-<label class="sr-only" for="employeeid">Employee ID</label>
-  <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="employeeid" placeholder="Enter Employee ID" name="employeeid"/>
-
+<form:label class="sr-only" for="employeeid" path="employeeid"/>Employee ID
+  <form:input class="form-control mb-2 mr-sm-2 mb-sm-0" id="employeeid" placeholder="Enter Employee ID" name="employeeid" path="employeeid"/>
+<form:errors path="employeeid" cssClass="error"/>
 <br/><br/>
 
-<label class="sr-only" for="password">Password</label>
-  <input type="password" class="form-control mb-2 mr-sm-2 mb-sm-0" id="password" placeholder="Enter Password" name="password"/>
-
+<form:label class="sr-only" for="password" path="password"/>Password
+  <form:password class="form-control mb-2 mr-sm-2 mb-sm-0" id="password" placeholder="Enter Password" name="password" path="password"/>
+<form:errors path="password" cssClass="error"/>
 <br/><br/>
 
-<label class="sr-only" for="emailid">Email ID</label>
-  <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="emailid" placeholder="Enter Email" name="emailid"/>
-
+<form:label class="sr-only" for="emailid" path="emailid"/>Email ID
+  <form:input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="emailid" placeholder="Enter Email" name="emailid" path="emailid"/>
+<form:errors path="emailid" cssClass="error"/>
 <br/><br/>
 
 
@@ -48,7 +48,7 @@
 				<input id="captchaCode" type="text" name="captchaCode" required="required"/> 
 
   <button type="submit" class="btn btn-primary">Sign Up</button>
-</form>
+</form:form>
 	</div>
 
     <jsp:include page="footer.jsp" />
