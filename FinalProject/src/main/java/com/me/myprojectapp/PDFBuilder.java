@@ -4,8 +4,6 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.springframework.web.servlet.ModelAndView;
-
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.Font;
@@ -31,14 +29,14 @@ public class PDFBuilder extends AbstractITextPdfView {
 			HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// get data model which is passed by the Spring container
 
-		doc.add(new Paragraph("Recommended books for Spring framework"));
+		doc.add(new Paragraph("Job Application PDF"));
 
 		Application application = (Application) model.get("application");
 
-		PdfPTable table = new PdfPTable(5);
+		PdfPTable table = new PdfPTable(2);
 		table.setWidthPercentage(100.0f);
-		table.setWidths(new float[] { 3.0f, 2.0f, 2.0f, 2.0f, 1.0f });
-		table.setSpacingBefore(10);
+		table.setWidths(new float[] { 2.0f, 2.0f });
+		table.setSpacingBefore(30);
 
 		// define font for table header row
 		Font font = FontFactory.getFont(FontFactory.HELVETICA);
@@ -46,35 +44,50 @@ public class PDFBuilder extends AbstractITextPdfView {
 
 		// define table header cell
 		PdfPCell cell = new PdfPCell();
-		cell.setBackgroundColor(BaseColor.BLUE);
-		cell.setPadding(5);
+		cell.setBackgroundColor(BaseColor.WHITE);
+		cell.setPadding(20);
 
 		// write table header
-		cell.setPhrase(new Phrase("Book Title", font));
-		table.addCell(cell);
+		//cell.setPhrase(new Phrase("Application ID", font));
+		table.addCell(new Phrase("Application ID"));
 
-		cell.setPhrase(new Phrase("Author", font));
-		table.addCell(cell);
+		table.addCell(new Phrase(application.getApplicationid()));
 
-		cell.setPhrase(new Phrase("ISBN", font));
-		table.addCell(cell);
+		table.addCell(new Phrase("Job ID"));
 
-		cell.setPhrase(new Phrase("Published Date", font));
-		table.addCell(cell);
+		table.addCell(new Phrase(application.getJob().getJobid()));
 
-		cell.setPhrase(new Phrase("Price", font));
-		table.addCell(cell);
+		table.addCell(new Phrase("Job Title"));
 
-		// write table row data
+		table.addCell(new Phrase(application.getJob().getJobtitle()));
 
-		table.addCell("Hi");
-		table.addCell("Hi");
-		table.addCell("Hi");
-		table.addCell("Hi");
-		table.addCell("Hi");
+		table.addCell(new Phrase("Employer"));
+
+		table.addCell(new Phrase(application.getJob().getEmployer()));
+
+		table.addCell(new Phrase("Wage"));
+
+		table.addCell(new Phrase(application.getJob().getWage()));
+
+		table.addCell(new Phrase("Grade Level"));
+
+		table.addCell(new Phrase(application.getGrade()));
+
+		table.addCell(new Phrase("Skills"));
+
+		table.addCell(new Phrase(application.getSkills()));
+
+		table.addCell(new Phrase("Experience"));
+
+		table.addCell(new Phrase(application.getExperience()));
+
+	
 
 		doc.add(table);
 
 	}
+	
+	
+	
 
 }
