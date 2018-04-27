@@ -454,6 +454,7 @@ public class UserController {
 		try {
 			viewApplicationStatus = applicationDao.viewEachApplication(applicationid);
 			map.addAttribute("viewApplicationStatus", viewApplicationStatus);
+			System.out.println("Aplicationnnnnnnnnnnnnnnnnnnnnnnnnnnnn"+viewApplicationStatus.getApplicationid());
 
 		} catch (Exception e) {
 			System.out.println("Inside All Applications List Exception" + e);

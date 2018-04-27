@@ -9,7 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Bootstrap 101 Template</title>
+    <title>Northeastern University Student Employment</title>
 
 
 <!-- Latest compiled and minified CSS -->
@@ -17,6 +17,28 @@
 
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
+
+<style>
+.navbar-default .navbar-brand {
+    color: white;
+}
+
+.navbar-default .navbar-nav>li>a {
+    color: white;
+    }
+    
+  		  .mainbody{
+    color:#b3b3b3;
+    }
+
+.btn .btn-primary{
+	background-color:#a30f2d;
+	margin-top:20px;
+	border:none;
+
+}
+
+</style>
 
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -26,6 +48,8 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
+  
+  
   <body>
   
   <c:set var="contextPath" value="${pageContext.request.contextPath}" />
@@ -37,13 +61,13 @@
    
    
    <div class="container">
-    <div class="brand">
+<%--     <div class="brand">
     Northeastern University : ${contextPath}
-    </div>
+    </div> --%>
     <div class="navbar">
     
     
-    <nav class="navbar navbar-default">
+    <nav class="navbar navbar-default" style="background-color:#a30f2d">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -53,7 +77,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Brand</a>
+      <a class="navbar-brand" href="#">Home</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -64,7 +88,7 @@
 <c:when test="${sessionScope.user.role eq student}">
 
 
- <li class="active"><a href="${contextPath}/user/userdashboard.htm">Student</a></li>
+ <li><a href="${contextPath}/user/userdashboard.htm">Student</a></li>
 		
         </c:when>
         

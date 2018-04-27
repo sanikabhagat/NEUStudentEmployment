@@ -6,10 +6,14 @@
 
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 
-<p>Change Application status</p>
+    <div class="mainbody" style="text-align:center;font-size:24px;margin-bottom:20px;">
+    	Change Application Status
+    </div>
+
+<!-- <p>Change Application status</p>
 
 
-Chhhhhhhhhhhhhhhhhhhhhhhhhhhangeeeeeeeeeeeeeeeeeeeeeee
+Chhhhhhhhhhhhhhhhhhhhhhhhhhhangeeeeeeeeeeeeeeeeeeeeeee -->
 
 <c:set value="${map.eachApplicationStatusChange}" var="application"/> 
 
@@ -33,7 +37,7 @@ Chhhhhhhhhhhhhhhhhhhhhhhhhhhangeeeeeeeeeeeeeeeeeeeeeee
   <option value="reject">Reject</option>
 </select></p>
 
-  <button type="submit" class="btn btn-primary">Change and Save Status</button>
+  <button type="submit" class="btn btn-primary" style="background-color:#a30f2d;margin-top:20px;border:none">Change and Save Status</button>
 </form> 
 </div>
 

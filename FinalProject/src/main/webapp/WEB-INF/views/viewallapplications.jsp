@@ -4,15 +4,19 @@
 
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 
+    <div class="mainbody" style="text-align:center;font-size:24px;margin-bottom:20px;">
+    	All Applications List
+    </div>
+
 
 <c:forEach items="${map.allApplications}" var="application">
 
 <!-- <form action="viewjobinformation.htm" method="POST"> --> 
  <form action="changeapplicationstatus.htm" method="POST"> 
-<div class="container" style="border:1px solid black">
+<div class="container1">
 <input type="hidden" id="jobid" name="jobid" value="${applicat.jobid}"/> 
 <input type="hidden" id="applicationid" name="applicationid" value="${application.applicationid}"/> 
-<a href="${contextPath}/user/printapplication.htm?applicationid=${application.applicationid}">Application ID :<c:out value = "${application.applicationid}"/></a> 
+<p><a href="${contextPath}/user/printapplication.htm?applicationid=${application.applicationid}">Application ID :<c:out value = "${application.applicationid}"/></a></p> 
  
  
   <p>Job ID :<c:out value = "${application.job.jobid}"/></p> 
@@ -26,12 +30,23 @@
 
 
 
-  <button type="submit">Change Application status</button>
+  <button type="submit" class="btn btn-primary" style="background-color:#a30f2d;margin-top:20px;border:none">Change Application status</button>
 
 </div>
         
   </form>      
          </c:forEach>
+         
+         <style>
+         .container1{
+ border:1px solid #cccccc;
+ border-radius:10px;
+ font-size:16px;
+ padding:10px 0px 10px 30px;
+ width:400px;
+ margin-bottom:30px;
+}
+         </style>
 
 
 <jsp:include page="footer.jsp" />

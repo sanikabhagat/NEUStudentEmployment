@@ -9,9 +9,13 @@
 <input type="hidden" id="contextPath"
 	value="${pageContext.request.contextPath}" name="contextPath">
 
-<p>View Application status</p>
+
 
 <c:set value="${map.applicationDesc}" var="application"/> 
+
+    <div class="mainbody" style="text-align:center;font-size:24px;margin-bottom:20px;">
+    	View Application
+    </div>
 
 
 <div class="container">
@@ -29,7 +33,7 @@
    <p>Experience :<c:out value = "${application.experience}"/></p>
 
 
-  <button type="submit" class="btn btn-primary" onclick="printform()">Print Application</button>
+ <!--  <button type="submit" class="btn btn-primary" onclick="printform()">Print Application</button> -->
   
   <h3><a href="printform.pdf?applicationid=${application.applicationid}">Download PDF Document</a></h3>
 <!-- </form>  -->

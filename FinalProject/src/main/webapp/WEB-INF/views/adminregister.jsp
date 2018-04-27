@@ -2,8 +2,8 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
  <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <%@page import="com.captcha.botdetect.web.servlet.Captcha"%>
-    <div class="mainbody" style="height:200px">
-    
+    <div class="mainbody" style="text-align:center;font-size:24px;margin-bottom:20px;">
+    	Admin Register Page
     </div>
 
 	<div class="register">
@@ -46,9 +46,17 @@
 					out.write(captchaHtml);
 				%> 
 				<input id="captchaCode" type="text" name="captchaCode" required="required"/> 
+				
+				<br/><br/>
 
-  <button type="submit" class="btn btn-primary">Sign Up</button>
+  <button type="submit" class="btn btn-primary" style="background-color:#a30f2d;margin-top:20px;border:none">Sign Up</button>
 </form:form>
 	</div>
+	
+	<style>
+	/* label{
+	margin-bottom:20px;
+	} */
+	</style>
 
     <jsp:include page="footer.jsp" />

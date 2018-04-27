@@ -2,8 +2,8 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
  <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <%@page import="com.captcha.botdetect.web.servlet.Captcha"%>
-    <div class="mainbody" style="height:200px">
-    
+    <div class="mainbody" style="text-align:center;font-size:24px;margin-bottom:20px;">
+    	Student Register Page
     </div>
 
 	<div class="register">
@@ -24,15 +24,19 @@
 	<form:errors path="nuid" cssClass="error"/>
 <br/><br/>
 
-<form:label class="sr-only" for="password" path="password"/>Password
-  <form:password class="form-control mb-2 mr-sm-2 mb-sm-0" id="password" placeholder="Enter Password" name="password" path="password"/>
-<form:errors path="password" cssClass="error"/>
-<br/><br/>
 
 <form:label class="sr-only" for="emailid" path="emailid"/>Email ID
   <form:input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="emailid" placeholder="Enter Email" name="emailid" path="emailid"/>
 <form:errors path="emailid" cssClass="error"/>
 <br/><br/>
+
+
+<form:label class="sr-only" for="password" path="password"/>Password
+  <form:password class="form-control mb-2 mr-sm-2 mb-sm-0" id="password" placeholder="Enter Password" name="password" path="password"/>
+<form:errors path="password" cssClass="error"/>
+<br/><br/>
+
+
 
   <form:label class="sr-only" for="program" path="program"/>Program
   <form:input class="form-control mb-2 mr-sm-2 mb-sm-0" id="program" placeholder="Enter Program" name="program" path="program"/>
@@ -49,9 +53,16 @@
 					out.write(captchaHtml);
 				%> 
 				<input id="captchaCode" type="text" name="captchaCode" required="required"/> 
+				
+				  <br/><br/>
 
-  <button type="submit" class="btn btn-primary">Sign Up</button>
+  <button type="submit" class="btn btn-primary" style="background-color:#a30f2d;margin-top:20px;border:none">Sign Up</button>
 </form:form>
 	</div>
+	<style>
+
+	
+	</style>
+
 
     <jsp:include page="footer.jsp" />

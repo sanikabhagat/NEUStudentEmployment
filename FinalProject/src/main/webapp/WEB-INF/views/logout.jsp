@@ -1,12 +1,25 @@
 <jsp:include page="header.jsp" />
 
-
-<p>
-You have successfully Logged out
-<p>
-
+ 
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 
- <a href="${contextPath}login.htm">Return to Login Page</a>
+
+   <div class="mainbody" style="text-align:center;font-size:24px;margin-bottom:20px;">
+    	User Logout
+    </div>
+
+<div class="logoutdiv">
+ <a class="logoutlink" href="${contextPath}login.htm">Return to Login Page</a>
+
+</div>
+
+
+<style>
+.logoutdiv{
+font-size:16px;
+margin-bottom:20px;
+text-align:center;
+}
+</style>
 
 <jsp:include page="footer.jsp" />

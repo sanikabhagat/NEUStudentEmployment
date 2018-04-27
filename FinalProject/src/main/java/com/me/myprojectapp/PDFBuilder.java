@@ -49,8 +49,10 @@ public class PDFBuilder extends AbstractITextPdfView {
 
 		// write table header
 		//cell.setPhrase(new Phrase("Application ID", font));
-		table.addCell(new Phrase("Application ID"));
+		table.addCell(new Phrase("Application"));
 
+		
+		
 		table.addCell(new Phrase(application.getApplicationid()));
 
 		table.addCell(new Phrase("Job ID"));
