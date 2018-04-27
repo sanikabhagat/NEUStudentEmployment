@@ -12,9 +12,21 @@
 		infrastructure -->
 
 	<!-- Enables the Spring MVC @Controller programming model -->
-	 <annotation-driven /> 
-	
+	<annotation-driven />
+
 	<!-- <mvc:annotation-driven /> -->
+
+
+<!-- 	<beans:bean
+		class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+
+		<beans:property name="interceptors">
+			<beans:list>
+				<beans:ref bean="httpInterceptor" />
+			</beans:list>
+		</beans:property>
+	</beans:bean> -->
+
 
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving 
 		up static resources in the ${webappRoot}/resources directory -->
@@ -39,6 +51,9 @@
 	<beans:bean id="loginValidator"
 		class="com.me.myprojectapp.validator.LoginValidator"></beans:bean>
 
+<!-- 	<beans:bean id="httpInterceptor"
+		class="com.me.myprojectapp.HttpInterceptor" /> -->
+
 	<beans:bean id="multipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<beans:property name="maxUploadSize" value="268435456" />
@@ -46,6 +61,11 @@
 
 	<context:component-scan
 		base-package="com.me.myprojectapp" />
+
+	<interceptors>
+		<beans:bean id="httpInterceptor"
+			class="com.me.myprojectapp.HttpInterceptor" />
+	</interceptors>
 
 
 

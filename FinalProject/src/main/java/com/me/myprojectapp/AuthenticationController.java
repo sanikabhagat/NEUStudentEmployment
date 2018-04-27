@@ -8,8 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
+
 import org.springframework.stereotype.Controller;
 import org.apache.commons.mail.DefaultAuthenticator;
 import org.apache.commons.mail.Email;
@@ -33,83 +32,13 @@ import com.me.myprojectapp.pojo.Admin;
 import com.me.myprojectapp.pojo.Job;
 import com.me.myprojectapp.pojo.Student;
 import com.me.myprojectapp.pojo.User;
-import com.me.myprojectapp.validator.LoginValidator;
-import com.me.myprojectapp.validator.UserValidator;
+
 
 
 @Controller
 public class AuthenticationController {
 
-/*@Autowired
-@Qualifier("userValidator")
-UserValidator userValidator;
 
-
-@Autowired
-@Qualifier("loginValidator")
-LoginValidator loginValidator;*/
-	
-/*	
-@RequestMapping(value = "/user/register.htm", method = RequestMethod.GET)
-public String showRegisterForm(HttpServletRequest request, User user) {
-request.setAttribute("userAttribute", new User());
-	return "register";
-}*/
-
-/*@RequestMapping(value = "/user/register.htm", method = RequestMethod.POST)
-public ModelAndView handleRegisterForm(HttpServletRequest request, UserDAO userDao, ModelMap map, @ModelAttribute("userAttribute") User user, BindingResult bindingResult) {
-userValidator.validate(user, bindingResult);
-	if (bindingResult.hasErrors())
-	{
-		
-		return new ModelAndView("register","user",user); 
-	}
-	Captcha captcha = Captcha.load(request, "CaptchaObject");
-	//String captchaCode = request.getParameter("captchaCode");
-	HttpSession session = request.getSession();
-	if(true) {
-	if (captcha.validate(captchaCode)) {
-		String useremail = request.getParameter("email");
-		String password = request.getParameter("password");
-		String firstname=request.getParameter("firstname");
-		String lastname=request.getParameter("firstname");
-		Long nuid=Long.parseLong(request.getParameter("nuid"));
-		String program=request.getParameter("program");
-		user = new User();
-		user.setEmailid(useremail);
-		user.setPassword(password);
-		user.setFirstname(firstname);
-		user.setLastname(lastname);
-		user.setNuid(nuid);
-		user.setProgram(program); 
-		user.setStatus(0);
-
-		try {
-			User u = userDao.register(user);
-			Random rand = new Random();
-			int randomNum1 = rand.nextInt(5000000);
-			int randomNum2 = rand.nextInt(5000000);
-			try {
-				String str = "http://localhost:8080/myprojectapp/user/validateuser.htm?email=" + user.getEmailid() + "&key1="
-						+ randomNum1 + "&key2=" + randomNum2;
-				session.setAttribute("key1", randomNum1);
-				session.setAttribute("key2", randomNum2);
-				sendEmail(user.getEmailid(),
-						"Click on this link to activate your account : "+ str);
-			} catch (Exception e) {
-				System.out.println("Email cannot be sent");	
-			}
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	} else {
-		map.addAttribute("errorMessage", "Invalid Captcha!");
-		return new ModelAndView ("register");
-	}
-
-	return new ModelAndView("register-successful");
-}*/
 
 /* --------------- Admin Registration ------------------*/
 
@@ -234,7 +163,10 @@ public ModelAndView showUserDashboardForm(HttpServletRequest request, User user)
 	
 	HttpSession session=request.getSession();
 	System.out.println(session);
+	
 	if(session.getAttribute("user")==null)
+	
+		
 	{
 		return new ModelAndView("redirect:/user/login.htm");
 	}
