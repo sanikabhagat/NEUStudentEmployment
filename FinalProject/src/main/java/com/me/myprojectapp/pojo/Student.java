@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 
 
 @Entity
@@ -21,6 +23,7 @@ public class Student extends User{
 	
 	
 	@Column(name = "firstname", nullable = false)
+	@NotEmpty(message = "Please enter your First Name")
 	public String getFirstname() {
 		return firstname;
 	}
@@ -30,6 +33,7 @@ public class Student extends User{
 	}
 
 	@Column(name = "lastname", nullable = false)
+	@NotEmpty(message = "Please enter your Last Name")
 	public String getLastname() {
 		return lastname;
 	}
@@ -49,6 +53,7 @@ public class Student extends User{
 
 
 	@Column(name = "program")
+	@NotEmpty(message = "Please enter your Program")
 	public String getProgram() {
 		return program;
 	}

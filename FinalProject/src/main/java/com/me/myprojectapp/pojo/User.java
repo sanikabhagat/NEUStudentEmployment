@@ -10,6 +10,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.NotEmpty;
+
 import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
 import javax.persistence.Inheritance;
@@ -41,7 +45,7 @@ public class User {
 	}
 
 	
-
+	@NotEmpty(message = "Please enter your username.")
 	@Column(name = "emailid", unique = true, nullable = false)
 	public String getEmailid() {
 		return emailid;
@@ -54,6 +58,8 @@ public class User {
 	}
 
 	@Column(name = "password")
+	@Size(min = 6 , max = 15)
+	@NotEmpty(message = "Please enter your password.")
 	public String getPassword() {
 		return password;
 	}

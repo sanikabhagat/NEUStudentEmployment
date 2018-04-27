@@ -1,10 +1,12 @@
 package com.me.myprojectapp;
 
 import java.util.ArrayList;
+import java.util.Map;
 import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -38,14 +40,14 @@ import com.me.myprojectapp.validator.UserValidator;
 @Controller
 public class AuthenticationController {
 
-@Autowired
+/*@Autowired
 @Qualifier("userValidator")
 UserValidator userValidator;
 
 
 @Autowired
 @Qualifier("loginValidator")
-LoginValidator loginValidator;
+LoginValidator loginValidator;*/
 	
 /*	
 @RequestMapping(value = "/user/register.htm", method = RequestMethod.GET)
@@ -252,22 +254,24 @@ public ModelAndView showAdminDashboardForm(HttpServletRequest request, User user
 
 
 @RequestMapping(value = "/user/login.htm", method = RequestMethod.GET)
-public String showLoginForm(/*HttpServletRequest request,User user*/) {
+public String showLoginForm(Map<String, Object> model) {
 		/*request.setAttribute("loginAttribute", user);*/
-	
+	User user = new User();
+    model.put("userForm", user);
+    
 	return "login";
 }
 
 @RequestMapping(value = "/user/login.htm", method = RequestMethod.POST)
 public ModelAndView handleLoginForm(HttpServletRequest request, UserDAO userDao, StudentDAO studentDao, 
-		ModelMap map/*, @ModelAttribute("loginAttribute") User user, BindingResult bindingResult*/) {
+		ModelMap map, @Valid @ModelAttribute("userForm") User userForm, BindingResult bindingResult, Map<String, Object> model) {
 	
-		/*loginValidator.validate(user, bindingResult);
+		/*loginValidator.validate(user, bindingResult);*/
 			if (bindingResult.hasErrors())
 			{
 				System.out.println("Going inside login validator");
-				return new ModelAndView("login","user",user); 
-			}*/
+				return new ModelAndView("login","user",userForm); 
+			}
 
 	HttpSession session = request.getSession();
 	
@@ -355,8 +359,10 @@ public String showRegisterAsForm() {
 
 
 @RequestMapping(value = "/user/studentregister.htm", method = RequestMethod.GET)
-public String showStudentRegisterForm() {
-
+public String showStudentRegisterForm(Map<String, Object> model) {
+	 User user = new Student();
+     model.put("loginStudentForm", user);
+    
 	return "studentregister";
 }
 
@@ -364,8 +370,15 @@ public String showStudentRegisterForm() {
 
 
 @RequestMapping(value = "/user/studentregister.htm", method = RequestMethod.POST)
-public ModelAndView handleRegisterForm(HttpServletRequest request, StudentDAO studentDao, ModelMap map) {
+public ModelAndView handleRegisterForm(HttpServletRequest request, StudentDAO studentDao, 
+		 ModelMap map, @Valid @ModelAttribute("loginStudentForm")Student student, BindingResult result, Map<String, Object> model) {
 
+	if (result.hasErrors()) {
+		System.out.println("Inside Student Register Validator");
+        return new ModelAndView ("studentregister");
+    }
+	
+	
 	Captcha captcha = Captcha.load(request, "CaptchaObject");
 	String captchaCode = request.getParameter("captchaCode");
 	HttpSession session = request.getSession();
@@ -377,7 +390,8 @@ public ModelAndView handleRegisterForm(HttpServletRequest request, StudentDAO st
 		String lastname=request.getParameter("lastname");
 		Long nuid=Long.parseLong(request.getParameter("nuid"));
 		String program=request.getParameter("program");
-		Student student = new Student();
+		/*Student student = new Student();*/
+		student = new Student();
 		student.setEmailid(useremail);
 		student.setPassword(password);
 		student.setFirstname(firstname);

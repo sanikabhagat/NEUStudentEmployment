@@ -3,23 +3,23 @@
 
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
  <%-- <c:set var="contextPath" value="${pageContext.request.contextPath}" /> --%>
-
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
     <div class="mainbody" style="height:200px">
     
     </div>
 
 	<div class="login">
-	<form class="form-inline" action="login.htm" method="POST">
-  <label class="sr-only" for="emailid"/>Email</label>
-  <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="emailid" placeholder="Enter Email ID" name="emailid" />
-	
+	<form:form class="form-inline" action="login.htm" method="POST" commandName="userForm">
+  <form:label class="sr-only" for="emailid" path="emailid"/>Email
+  <form:input class="form-control mb-2 mr-sm-2 mb-sm-0" id="emailid" placeholder="Enter Email ID" name="emailid" path="emailid"/>
+	<form:errors path="emailid" cssClass="error"/>
 	<br/><br/>
 	
 	
-  <label class="sr-only" for="password">Password</label>
+  <form:label class="sr-only" for="password" path="password"/>Password
   <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-    <input type="password" class="form-control" id="password" placeholder="Enter Password" name="password"/>
-   
+    <form:password class="form-control" id="password" placeholder="Enter Password" name="password" path="password"/>
+   <form:errors path="password" cssClass="error"/>
   </div>
    
   <br/><br/>
@@ -38,6 +38,6 @@
   </div>
 
   <button type="submit" class="btn btn-primary">Log In</button>
-</form>
+</form:form>
 	</div>
     <jsp:include page="footer.jsp" />
