@@ -41,7 +41,7 @@ public class Application {
 		this.applicationid = applicationid;
 	}
 
-	@Column(name = "grade", unique = true, nullable = false)
+	@Column(name = "grade", nullable = false)
 	public String getGrade() {
 		return grade;
 	}

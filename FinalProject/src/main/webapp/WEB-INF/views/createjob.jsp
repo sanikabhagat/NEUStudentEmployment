@@ -15,35 +15,35 @@
 	<form class="form-inline" action="createjob.htm" method="POST">
 	
 	 <label for="jobid">Job ID</label><br/>
-  <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="jobid" placeholder="Enter Job ID" name="jobid" />
+  <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="jobid" placeholder="Enter Job ID" name="jobid" required/>
 	
 	<br/><br/>
 	
   <label for="jobtitle">Job Title</label><br/>
-  <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="jobtitle" placeholder="Enter Job Title" name="jobtitle" />
+  <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="jobtitle" placeholder="Enter Job Title" name="jobtitle" required/>
 	
 	<br/><br/>
 	
 		 <label for="employer">Employer</label><br/>
-  <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="employer" placeholder="Enter Employer" name="employer" />
+  <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="employer" placeholder="Enter Employer" name="employer" required/>
 	
 	<br/><br/>
 	
 	<label for="category">Category</label><br/>
-  <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="category" placeholder="Enter Category" name="category" />
+  <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="category" placeholder="Enter Category" name="category" required/>
 	
 	<br/><br/>
 	
   <label for="wage">Wage</label>
   <br/>
-  <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="wage" placeholder="Enter Wage" name="wage" />
+  <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="wage" placeholder="Enter Wage" name="wage" required/>
 	
 	<br/><br/>
 	
 	
  <label for="openings">Number Of Openings</label>
  <br/>
-  <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="openings" placeholder="Enter Number of Openings" name="openings" />
+  <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="openings" placeholder="Enter Number of Openings" name="openings" required/>
 	
 	
 	 <input type="hidden" value="${sessionScope.user.emailid}" name="loggedadmin"> 

@@ -5,7 +5,7 @@
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 
     <div class="mainbody" style="text-align:center;font-size:24px;margin-bottom:20px;">
-    	User Dashboard
+    	Admin Dashboard
     </div>
 
 

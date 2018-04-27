@@ -8,8 +8,8 @@
 
 
  
-    <div class="mainbody">
-    
+    <div class="mainbody" style="text-align:center;font-size:32px;margin-bottom:20px;">
+    	Welcome to Northeastern University Student Employment Website
     </div>
  
     

@@ -7,7 +7,7 @@
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 
 
-<%-- <c:set value="${map.listOfApplications.jobid}" var="job"/> --%>
+<%--  <c:set value="${map.listOfApplications.jobid}" var="job"/>  --%>
 
    <div class="mainbody" style="text-align:center;font-size:24px;margin-bottom:20px;">
     	View My Applications

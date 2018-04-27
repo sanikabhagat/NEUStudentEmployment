@@ -23,7 +23,8 @@ public class HttpInterceptor extends HandlerInterceptorAdapter {
 				&& !request.getRequestURI().equals(ROOT_CONTEXT)
 				&& !request.getRequestURI().equals(ROOT_CONTEXT + "user/studentregister.htm")
 				&& !request.getRequestURI().equals(ROOT_CONTEXT + "user/adminregister.htm")
-				&& !request.getRequestURI().equals(ROOT_CONTEXT + "user/registeras.htm")) {
+				&& !request.getRequestURI().equals(ROOT_CONTEXT + "user/registeras.htm")
+				&& !request.getRequestURI().contains(ROOT_CONTEXT + "user/validateuser.htm")) {
 
 			if (session.getAttribute("user") == null) {
 				response.sendRedirect("/myprojectapp/user/login.htm");
