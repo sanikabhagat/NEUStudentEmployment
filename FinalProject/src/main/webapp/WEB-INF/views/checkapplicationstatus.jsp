@@ -6,10 +6,14 @@
 
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 
-<p>Change Application status</p>
+<!-- <p>Change Application status</p>
 
 
-Chhhhhhhhhhhhhhhhhhhhhhhhhhhangeeeeeeeeeeeeeeeeeeeeeee
+Chhhhhhhhhhhhhhhhhhhhhhhhhhhangeeeeeeeeeeeeeeeeeeeeeee -->
+
+    <div class="mainbody" style="text-align:center;font-size:24px;margin-bottom:20px;">
+    	Check Application Status
+    </div>
 
 <c:set value="${map.viewApplicationStatus}" var="application"/> 
 
@@ -28,6 +32,8 @@ Chhhhhhhhhhhhhhhhhhhhhhhhhhhangeeeeeeeeeeeeeeeeeeeeeee
   <p>Skills :<c:out value = "${application.grade}"/></p>
    <p>Experience :<c:out value = "${application.experience}"/></p>
 <p>Application status : <c:out value = "${application.appstatus}"/></p>
+<br/><br/>
+<a style="font-size:20px" href="${contextPath}/user/userdashboard.htm">Back to Dashboard</a>
 
 <!-- 
   <button type="submit" class="btn btn-primary">Change and Save Status</button>

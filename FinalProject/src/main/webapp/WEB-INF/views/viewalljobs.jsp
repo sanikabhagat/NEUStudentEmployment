@@ -4,6 +4,9 @@
 
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 
+    <div class="mainbody" style="text-align:center;font-size:24px;margin-bottom:20px;">
+    	View All Jobs
+    </div>
 
 <input type="hidden" id="contextPath"
 	value="${pageContext.request.contextPath}" name="contextPath">
@@ -93,5 +96,17 @@
 	}
 </script>
 
+
+<style>
+  .main_container{
+ border:1px solid #cccccc;
+ border-radius:10px;
+ font-size:16px;
+ padding:10px 0px 10px 30px;
+ width:400px;
+ margin-bottom:30px;
+ margin-top:30px;
+}
+</style>
 
 <jsp:include page="footer.jsp" />
