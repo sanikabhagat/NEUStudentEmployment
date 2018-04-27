@@ -22,7 +22,7 @@
  <p>Grade Level :<c:out value = "${application.skills}"/></p>
   <p>Skills :<c:out value = "${application.grade}"/></p>
    <p>Experience :<c:out value = "${application.experience}"/></p>
-
+<p><a href="${contextPath}/user/resume.pdf?applicationid=${application.applicationid}">View Resume</a></p>
 
 
 

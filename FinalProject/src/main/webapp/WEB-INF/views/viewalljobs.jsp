@@ -13,22 +13,18 @@
 <div class="main_container" name="main_container" id="main_container"></div>
 
 <script>
-	
-$( document ).ready(function() {
-	searchjob();
-});
-
-
-$( "#searchjob" ).keyup(function() {
-	  searchjob();
+	$(document).ready(function() {
+		searchjob();
 	});
 
+	$("#searchjob").keyup(function() {
+		searchjob();
+	});
 
 	function searchjob() {
 
-			
 		var main_container = document.getElementById("main_container");
-		main_container.innerHTML="";
+		main_container.innerHTML = "";
 		var contextPath = document.getElementById("contextPath").value;
 		$.ajax({
 			type : "POST",
@@ -44,6 +40,8 @@ $( "#searchjob" ).keyup(function() {
 
 				for (job in data) {
 
+					console.log(data);
+
 					var div_container = document.createElement("div");
 
 					var input = document.createElement("input");
@@ -53,10 +51,10 @@ $( "#searchjob" ).keyup(function() {
 					input.value = data[job].jobid;
 
 					var a = document.createElement("a");
-							a.href = contextPath
-									+ "/user/viewjobinformation.htm?jobid="
-									+ data[job].jobid;
-									a.innerHTML = "Job ID";
+					a.href = contextPath
+							+ "/user/viewjobinformation.htm?jobid="
+							+ data[job].jobid;
+					a.innerHTML = "Job ID: " + data[job].jobid;
 					a.value = data[job].jobid;
 
 					var p_jobtitle = document.createElement("p");
@@ -77,7 +75,7 @@ $( "#searchjob" ).keyup(function() {
 					div_container.appendChild(p_jobtitle);
 					div_container.appendChild(p_employer);
 					div_container.appendChild(p_openings);
-					div_container.appendChild(button);
+					//div_container.appendChild(button);
 
 					main_container.appendChild(div_container);
 

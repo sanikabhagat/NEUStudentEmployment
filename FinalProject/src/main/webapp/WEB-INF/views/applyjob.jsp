@@ -13,9 +13,11 @@ ${map.jobDesc.jobid} ${sessionScope.user.emailid}
 
 
 <div class="applyjob">
-	<form class="form-inline" action="applyjob.htm" method="POST">
+	<form class="form-inline" action="applyjob.htm" method="POST" enctype="multipart/form-data">
 
 		<input type="hidden" value="${map.jobDesc.jobid}" name="jobid">
+		
+
 
 		<label class="sr-only" for="firstname">First Name</label>
 		${sessionScope.user.firstname} <input type="hidden"
@@ -69,6 +71,8 @@ ${map.jobDesc.jobid} ${sessionScope.user.emailid}
 				placeholder="Enter Skills" name="skills" />
 
 		</div>
+		
+		<input type="file" name="file" id="file">
 
 		<br /> <br /> <br /> <br />
 
@@ -78,7 +82,7 @@ ${map.jobDesc.jobid} ${sessionScope.user.emailid}
 			Application</button>
 	</form>
 
-	<form method="POST" id="fileUploadForm" action="/upload"
+	<!-- <form method="POST" id="fileUploadForm" action="/upload"
 		enctype="multipart/form-data">
 
 		<label class="sr-only" for="resume">Upload your Resume</label>
@@ -86,7 +90,7 @@ ${map.jobDesc.jobid} ${sessionScope.user.emailid}
 			<input type="file" name="file" id="file"> <input
 				type="submit" value="Upload" name="uploadbtn" id="uploadbtn">
 		</div>
-	</form>
+	</form> -->
 </div>
 
 <script>

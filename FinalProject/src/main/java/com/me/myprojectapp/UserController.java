@@ -3,6 +3,7 @@ package com.me.myprojectapp;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 
@@ -135,9 +136,11 @@ public class UserController {
 
 	@RequestMapping(value = "/user/applyjob.htm", method = RequestMethod.POST)
 	public ModelAndView showApplySuccessForm(HttpServletRequest request, UserDAO userDao, AdminDAO adminDao,
-			StudentDAO studentDao, HandlerDAO handlerDao, JobDAO jobDao, ModelMap map, ApplicationsDAO applicationDao) {
+			@RequestParam("file") MultipartFile file, StudentDAO studentDao, HandlerDAO handlerDao, JobDAO jobDao,
+			ModelMap map, ApplicationsDAO applicationDao) {
 
 		String jobId = request.getParameter("jobid");
+
 		/* Captcha captcha = Captcha.load(request, "CaptchaObject"); */
 		// String captchaCode = request.getParameter("captchaCode");
 		HttpSession session = request.getSession();
@@ -182,6 +185,10 @@ public class UserController {
 
 				Application a = applicationDao.createApplication(application);
 
+				System.out.println(a.getApplicationid());
+
+				saveFile(file, String.valueOf(a.getApplicationid()));
+
 				System.out.println(a);
 				System.out.println("Helllllllllllllllooooooooooooo JOb" + a);
 
@@ -195,6 +202,29 @@ public class UserController {
 		}
 
 		return new ModelAndView("redirect:/user/applysuccess.htm");
+
+	}
+
+	@RequestMapping(value = "/user/resume.pdf", method = RequestMethod.GET, produces="application/pdf ")
+	public @ResponseBody byte[] getImageWithMediaType(HttpServletRequest request) throws IOException {
+		/*
+		 * File file = new File(System.getProperty(“user.dir”) + RESUME_DIR +
+		 * “resumeAnubhav”);
+		 */
+
+		String applicationId = request.getParameter("applicationid");
+
+		Path path = Paths.get(System.getProperty("user.dir") + RESUME_DIR + "resume_" + applicationId + ".pdf");
+		return Files.readAllBytes(path);
+
+		/*
+		 * InputStream is = new FileInputStream(file); if (is != null) { return
+		 * Io.toByteArray(is); }
+		 * 
+		 * ClassPathResource imageFile = new
+		 * ClassPathResource(“static/images/default-placeholder.png”); return
+		 * IOUtils.toByteArray(imageFile.getInputStream());
+		 */
 
 	}
 
@@ -354,7 +384,7 @@ public class UserController {
 
 		}
 
-		File tempFile = new File(resumeDir + file.getOriginalFilename());
+		File tempFile = new File(resumeDir + "Resume_");
 
 		try {
 			file.transferTo(tempFile);
@@ -409,7 +439,7 @@ public class UserController {
 			ApplicationsDAO applicationDao, StudentDAO studentDao, Job job, JobDAO jobDao, ModelMap map) {
 
 		String applicationid = request.getParameter("applicationid");
-		/*String applicationid = "1";*/
+		/* String applicationid = "1"; */
 
 		System.out.println(applicationid);
 
@@ -418,7 +448,7 @@ public class UserController {
 		 * 
 		 * 
 		 */
-		
+
 		Application viewApplicationStatus = null;
 
 		try {
@@ -430,6 +460,33 @@ public class UserController {
 		}
 
 		return new ModelAndView("pdfView", "application", viewApplicationStatus);
+
+	}
+
+	public void saveFile(MultipartFile file, String applicationId) {
+
+		if (file == null || file.isEmpty()) {
+			return;
+		}
+
+		// Get the file and save it somewhere
+
+		String resumeDir = System.getProperty("user.dir") + RESUME_DIR;
+		System.out.println(resumeDir);
+
+		if (!Files.exists(Paths.get(resumeDir))) {
+
+			new File(resumeDir).mkdir();
+
+		}
+
+		File tempFile = new File(resumeDir + "Resume_" + applicationId + ".pdf");
+
+		try {
+			file.transferTo(tempFile);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 
 	}
 
